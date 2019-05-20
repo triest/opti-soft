@@ -21,8 +21,9 @@ namespace OptiSoft
         {
             SQL sql = new SQL();
             //sql.GetDBConnection();
-            sql.GetAllData();
+            
 
+            dataGridView1.DataSource = sql.GetAllData();
 
         }
     }

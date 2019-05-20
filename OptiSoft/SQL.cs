@@ -16,6 +16,8 @@ namespace OptiSoft
         public static object DBSQLServerUtils { get; private set; }
 
         public SqlConnection con;
+      
+
         //To Handle connection related activities
         private void connection()
         {
@@ -28,7 +30,7 @@ namespace OptiSoft
             connection();
         }
 
-        public void GetAllData()
+        public DataTable GetAllData()
         {
        
             try
@@ -42,12 +44,15 @@ namespace OptiSoft
                 // execute the command
                 SqlDataReader rdr = null;
                 rdr = command.ExecuteReader();
+                DataTable dt = new DataTable();
+                dt.Columns.Add("Номер");
+                dt.Columns.Add("Дата");
+                dt.Columns.Add("Статус");
                 while (rdr.Read())
                 {
-                    Console.WriteLine(
-                   rdr["description"]
-                 );
-                }
+                    dt.Rows.Add(rdr["id"], rdr["date"], rdr["status_id"]);         
+                   }
+                return dt;
             }
             finally
             {
