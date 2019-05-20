@@ -16,5 +16,11 @@ namespace OptiSoft
         {
             InitializeComponent();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            SQL sql = new SQL();
+            sql.GetDBConnection();
+        }
     }
 }
