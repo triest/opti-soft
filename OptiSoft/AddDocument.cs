@@ -39,7 +39,6 @@ namespace OptiSoft
             {
                 SQL sql = new SQL();
                 sql.InsertData(dateTime,description,1,number);
-
             }
         }
     }
