@@ -19,7 +19,7 @@ namespace OptiSoft
       
 
         //To Handle connection related activities
-        private void connection()
+        public void connection()
         {
             string constr = "Data Source=MACHINE-VOIV7EH\\SQLEXPRESS; Initial Catalog = OptiSoft; Persist Security Info = False;Integrated Security=True;";
             con = new SqlConnection(constr);
@@ -29,6 +29,37 @@ namespace OptiSoft
         {
             connection();
         }
+
+        //call store procedure for insert date in Documents table
+        public void InsertData(string date,string description, Int16 status, string number)
+        {
+            if (date!=null && description!=null && status!=null && number != null)
+            {
+                connection();
+                con.Open();
+                SqlCommand command = new SqlCommand("InsertDate", con);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("@date", date);
+                command.Parameters.Add("@description", description);
+                command.Parameters.Add("@status", status);
+                command.Parameters.Add("@number", number);
+                try
+                {
+                    command.ExecuteNonQuery();
+                }
+                catch
+                {
+                    Console.WriteLine("error");
+                }
+                finally
+                {
+                    con.Close();
+                } 
+            }
+
+        }
+        
+        
 
         public DataTable GetAllData()
         {

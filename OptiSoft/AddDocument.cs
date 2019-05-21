@@ -30,10 +30,17 @@ namespace OptiSoft
         private void button1_Click(object sender, EventArgs e)
         {
             String number = DocumentNumber.Text;
-            String Description = DocumentDescription.Text;
+            String description = DocumentDescription.Text;
             String dateTime = DocumentDate.Value.ToShortDateString();
-            Console.WriteLine(number);Console.WriteLine(Description); Console.WriteLine(dateTime);
-            
+            Console.WriteLine(number);Console.WriteLine(description); Console.WriteLine(dateTime);
+
+
+            if(number!=null && description!=null && dateTime!=null)
+            {
+                SQL sql = new SQL();
+                sql.InsertData(dateTime,description,1,number);
+
+            }
         }
     }
 }
