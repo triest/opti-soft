@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.AddDocumentDialogButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -40,11 +41,22 @@
             this.dataGridView1.Size = new System.Drawing.Size(915, 232);
             this.dataGridView1.TabIndex = 0;
             // 
+            // AddDocumentDialogButton
+            // 
+            this.AddDocumentDialogButton.Location = new System.Drawing.Point(759, 28);
+            this.AddDocumentDialogButton.Name = "AddDocumentDialogButton";
+            this.AddDocumentDialogButton.Size = new System.Drawing.Size(143, 23);
+            this.AddDocumentDialogButton.TabIndex = 1;
+            this.AddDocumentDialogButton.Text = "Добавить документ";
+            this.AddDocumentDialogButton.UseVisualStyleBackColor = true;
+            this.AddDocumentDialogButton.Click += new System.EventHandler(this.AddDocumentDialogButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1016, 375);
+            this.Controls.Add(this.AddDocumentDialogButton);
             this.Controls.Add(this.dataGridView1);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -57,6 +69,7 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button AddDocumentDialogButton;
     }
 }
 

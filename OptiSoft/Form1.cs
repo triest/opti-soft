@@ -21,10 +21,15 @@ namespace OptiSoft
         {
             SQL sql = new SQL();
             //sql.GetDBConnection();
-            
+
 
             dataGridView1.DataSource = sql.GetAllData();
 
+        }
+
+        private void AddDocumentDialogButton_Click(object sender, EventArgs e)
+        {
+            new AddDocument().Show();
         }
     }
 }
