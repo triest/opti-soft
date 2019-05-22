@@ -35,6 +35,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.DocumentDate = new System.Windows.Forms.DateTimePicker();
             this.button1 = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // DocumentNumber
@@ -74,7 +75,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(29, 208);
+            this.label2.Location = new System.Drawing.Point(26, 266);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(90, 13);
             this.label2.TabIndex = 5;
@@ -82,14 +83,14 @@
             // 
             // DocumentDate
             // 
-            this.DocumentDate.Location = new System.Drawing.Point(146, 208);
+            this.DocumentDate.Location = new System.Drawing.Point(146, 260);
             this.DocumentDate.Name = "DocumentDate";
             this.DocumentDate.Size = new System.Drawing.Size(200, 20);
             this.DocumentDate.TabIndex = 6;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(32, 248);
+            this.button1.Location = new System.Drawing.Point(32, 301);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(124, 23);
             this.button1.TabIndex = 7;
@@ -97,11 +98,21 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(26, 219);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(41, 13);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "Статус";
+            // 
             // AddDocument
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(640, 283);
+            this.ClientSize = new System.Drawing.Size(640, 383);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.DocumentDate);
             this.Controls.Add(this.label2);
@@ -111,6 +122,7 @@
             this.Controls.Add(this.DocumentNumber);
             this.Name = "AddDocument";
             this.Text = "AddDocument";
+            this.Load += new System.EventHandler(this.AddDocument_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -125,5 +137,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker DocumentDate;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label4;
     }
 }

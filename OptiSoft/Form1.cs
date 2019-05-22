@@ -21,15 +21,34 @@ namespace OptiSoft
         {
             SQL sql = new SQL();
             //sql.GetDBConnection();
-
-
             dataGridView1.DataSource = sql.GetAllData();
-
         }
 
         private void AddDocumentDialogButton_Click(object sender, EventArgs e)
         {
             new AddDocument().Show();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+         
+            DataGridView temp = (DataGridView)sender;
+            if (temp.CurrentRow == null)
+            {
+                return;
+            }
+           string txtFullName = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+            Console.WriteLine("current row "+txtFullName);
+            int id = Int32.Parse(txtFullName);  //get id
+
+            SQL sql = new SQL();
+            Record record = sql.SelectSingle(id); //get record
+
+            EditDocument edit = new EditDocument();
+            Console.WriteLine(record.doc_number);
+            edit.DocumentNumber.Text =record.doc_number;
+            edit.DocumentDescription.Text = record.description;
+            edit.Show();
         }
     }
 }

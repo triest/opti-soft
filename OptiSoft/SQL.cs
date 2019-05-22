@@ -30,6 +30,8 @@ namespace OptiSoft
             connection();
         }
 
+
+
         //call store procedure for insert date in Documents table
         public void InsertData(string date,string description, Int16 status, string number)
         {
@@ -56,9 +58,14 @@ namespace OptiSoft
                     con.Close();
                 } 
             }
-
         }
         
+
+        public void GetStatusList()
+        {
+            connection();
+            con.Open();
+        }
         
 
         public DataTable GetAllData()
@@ -92,6 +99,40 @@ namespace OptiSoft
                     con.Close();
                 }
             }
+        }
+
+        public Record SelectSingle(int id)
+        {
+
+            try
+            {
+                connection();
+                con.Open();
+                SqlCommand command = new SqlCommand("select_single", con);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("@id", id);
+                SqlDataReader rdr = null;
+                rdr = command.ExecuteReader();
+                while (rdr.Read())
+                {
+                    //dt.Rows.Add(rdr["id"], rdr["date"], rdr["status_id"]);
+                    Record record = new Record();
+                    String temp = rdr["id"].ToString();
+                    record.id = Int32.Parse(temp);
+                    record.date = rdr["date"].ToString();
+                    record.description = rdr["description"].ToString();
+                    temp = rdr["status"].ToString();
+                    record.status = Int32.Parse(temp);
+                    record.doc_number = rdr["doc_number"].ToString();
+                    return record;
+                }
+
+            }
+            finally
+            {
+               
+            }
+            return null;
         }
     }
 }

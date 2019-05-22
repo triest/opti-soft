@@ -32,14 +32,16 @@ namespace OptiSoft
             String number = DocumentNumber.Text;
             String description = DocumentDescription.Text;
             String dateTime = DocumentDate.Value.ToShortDateString();
-            Console.WriteLine(number);Console.WriteLine(description); Console.WriteLine(dateTime);
-
-
-            if(number!=null && description!=null && dateTime!=null)
+           if(number!=null && description!=null && dateTime!=null)
             {
                 SQL sql = new SQL();
                 sql.InsertData(dateTime,description,1,number);
             }
+        }
+
+        private void AddDocument_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
