@@ -36,6 +36,7 @@
             this.DocumentDescription = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.DocumentNumber = new System.Windows.Forms.TextBox();
+            this.statusBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label4
@@ -107,11 +108,20 @@
             this.DocumentNumber.TabIndex = 9;
             this.DocumentNumber.TextChanged += new System.EventHandler(this.DocumentNumber_TextChanged);
             // 
+            // statusBox
+            // 
+            this.statusBox.FormattingEnabled = true;
+            this.statusBox.Location = new System.Drawing.Point(153, 183);
+            this.statusBox.Name = "statusBox";
+            this.statusBox.Size = new System.Drawing.Size(121, 21);
+            this.statusBox.TabIndex = 17;
+            // 
             // EditDocument
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(622, 330);
+            this.Controls.Add(this.statusBox);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.DocumentDate);
@@ -137,5 +147,6 @@
         private System.Windows.Forms.Label label1;
         public System.Windows.Forms.TextBox DocumentNumber;
         public System.Windows.Forms.TextBox DocumentDescription;
+        public System.Windows.Forms.ComboBox statusBox;
     }
 }

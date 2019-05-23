@@ -16,7 +16,7 @@ namespace OptiSoft
         public static object DBSQLServerUtils { get; private set; }
 
         public SqlConnection con;
-      
+
 
         //To Handle connection related activities
         public void connection()
@@ -33,9 +33,9 @@ namespace OptiSoft
 
 
         //call store procedure for insert date in Documents table
-        public void InsertData(string date,string description, Int16 status, string number)
+        public void InsertData(string date, string description, Int16 status, string number)
         {
-            if (date!=null && description!=null && status!=null && number != null)
+            if (date != null && description != null && status != null && number != null)
             {
                 connection();
                 con.Open();
@@ -56,21 +56,21 @@ namespace OptiSoft
                 finally
                 {
                     con.Close();
-                } 
+                }
             }
         }
-        
+
 
         public void GetStatusList()
         {
             connection();
             con.Open();
         }
-        
+
 
         public DataTable GetAllData()
         {
-       
+
             try
             {
 
@@ -88,8 +88,8 @@ namespace OptiSoft
                 dt.Columns.Add("Статус");
                 while (rdr.Read())
                 {
-                    dt.Rows.Add(rdr["id"], rdr["date"], rdr["status_id"]);         
-                   }
+                    dt.Rows.Add(rdr["id"], rdr["date"], rdr["status_id"]);
+                }
                 return dt;
             }
             finally
@@ -126,6 +126,44 @@ namespace OptiSoft
                     record.doc_number = rdr["doc_number"].ToString();
                     return record;
                 }
+
+            }
+            finally
+            {
+
+            }
+            return null;
+        }
+
+        public string[]  getStatusList()
+        {
+            try
+            {
+                connection();
+                con.Open();
+                SqlCommand command = new SqlCommand("get_status_list", con);
+                command.CommandType = CommandType.StoredProcedure;
+                SqlDataReader rdr = null;
+                rdr = command.ExecuteReader();
+                //array of status
+                //Dictionary<int, String> array = new Dictionary<int, string>();
+                
+                List<string> temp=new List<string>();
+                int i = 0;
+                
+                while (rdr.Read())
+                {
+                    //  array.Add(i, rdr["name"].ToString());
+                    // i++;
+                    // array.Add(rdr["name"].ToString());
+                    //array[i]=rdr["status"].ToString();
+                    //i=i+1;
+                    //temp.add(rdr["status"].ToString());
+                    temp.Add(rdr["status"].ToString());
+                }
+                string[] array = temp.ToArray();
+
+                return array;
 
             }
             finally
