@@ -33,7 +33,7 @@ namespace OptiSoft
 
 
         //call store procedure for insert date in Documents table
-        public void InsertData(string date, string description, Int16 status, string number)
+        public void InsertData(string date, string description, int status, string number)
         {
             if (date != null && description != null && status != null && number != null)
             {

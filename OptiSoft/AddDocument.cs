@@ -32,10 +32,17 @@ namespace OptiSoft
             String number = DocumentNumber.Text;
             String description = DocumentDescription.Text;
             String dateTime = DocumentDate.Value.ToShortDateString();
-           if(number!=null && description!=null && dateTime!=null)
+            int status = statusBox.SelectedIndex;
+            status = status + 1;
+            Console.WriteLine(status);
+
+
+                
+
+           if (number!=null && description!=null && dateTime!=null)
             {
                 SQL sql = new SQL();
-                sql.InsertData(dateTime,description,1,number);
+                sql.InsertData(dateTime,description,status,number);
             }
         }
 

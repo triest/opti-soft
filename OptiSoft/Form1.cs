@@ -26,7 +26,10 @@ namespace OptiSoft
 
         private void AddDocumentDialogButton_Click(object sender, EventArgs e)
         {
-            new AddDocument().Show();
+            SQL sql = new SQL();
+            AddDocument addDocument = new AddDocument();
+            addDocument.statusBox.Items.AddRange(sql.getStatusList());
+            addDocument.Show();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)

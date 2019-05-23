@@ -35,7 +35,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.DocumentDate = new System.Windows.Forms.DateTimePicker();
             this.button1 = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
+            this.statusBox = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // DocumentNumber
@@ -98,21 +99,30 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // label4
+            // statusBox
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(26, 219);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(41, 13);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "Статус";
+            this.statusBox.FormattingEnabled = true;
+            this.statusBox.Location = new System.Drawing.Point(146, 211);
+            this.statusBox.Name = "statusBox";
+            this.statusBox.Size = new System.Drawing.Size(121, 21);
+            this.statusBox.TabIndex = 19;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(26, 219);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(41, 13);
+            this.label5.TabIndex = 18;
+            this.label5.Text = "Статус";
             // 
             // AddDocument
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(640, 383);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.statusBox);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.DocumentDate);
             this.Controls.Add(this.label2);
@@ -137,6 +147,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker DocumentDate;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label4;
+        public System.Windows.Forms.ComboBox statusBox;
+        private System.Windows.Forms.Label label5;
     }
 }
