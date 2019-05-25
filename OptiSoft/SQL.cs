@@ -29,6 +29,7 @@ namespace OptiSoft
         public void GetDBConnection()
         {
             connection();
+
         }
 
 
@@ -92,8 +93,43 @@ namespace OptiSoft
 
         public void GetStatusList()
         {
-            connection();
+         
             con.Open();
+        }
+
+        public bool TestConnect(String ServerName, String User,String password,String Database)
+        {
+            connection();
+
+            //string constr = "Data Source=MACHINE-VOIV7EH\\SQLEXPRESS; Initial Catalog = OptiSoft; Persist Security Info = False;Integrated Security=True;";
+
+            //string ConectString= "Data Source=" + ServerName.Trim() + "; Initial Catalog = " + Database.Trim() + "; Persist Security Info = False;Integrated Security=True;";
+
+            //Data Source=MACHINE-VOIV7EH\\SQLEXPRESS;Initial Catalog = OptiSoft; Persist Security Info = False;Integrated Security=True;
+           string ConectString = "Data Source=MACHINE-VOIV7EH\\SQLEXPRESS; Initial Catalog = OptiSoft; Persist Security Info = False;Integrated Security=True;";
+
+            Console.WriteLine(ConectString);
+
+            using (SqlConnection connection = new SqlConnection(ConectString))
+            {
+
+
+                try
+                {
+                    connection.Open();
+                    return true;
+                }
+                catch (SqlException)
+                {
+                  
+                }
+                finally{   
+                    connection.Close();
+                  
+                }
+            }
+            return false;
+            return true;
         }
 
 

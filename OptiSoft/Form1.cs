@@ -61,5 +61,11 @@ namespace OptiSoft
             edit.statusBox.SelectedIndex = record.status-1;
             edit.Show();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Settings settings = new Settings();
+            settings.Show();
+        }
     }
 }
