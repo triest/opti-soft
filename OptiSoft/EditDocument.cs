@@ -24,6 +24,25 @@ namespace OptiSoft
 
         private void button1_Click(object sender, EventArgs e)
         {
+            Int32 id = Convert.ToInt32(documentId.Value);
+            Console.Out.WriteLine(id);
+
+            String number = DocumentNumber.Text;
+            String description = DocumentDescription.Text;
+            String dateTime = DocumentDate.Value.ToShortDateString();
+            int status = statusBox.SelectedIndex;
+            status = status + 1;
+            if (number != null && description != null && dateTime != null)
+            {
+                SQL sql = new SQL();
+                sql.UpdateDate(id,dateTime, description, status, number);
+            }
+
+
+        }
+
+        private void documentId_ValueChanged(object sender, EventArgs e)
+        {
 
         }
     }

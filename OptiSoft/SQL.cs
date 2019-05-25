@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
+using System.IO;
 
 namespace OptiSoft
 {
@@ -60,6 +61,39 @@ namespace OptiSoft
             }
         }
 
+        public void UpdateDate(int id, string date, string description, int status, string number)
+        {
+            if (date != null && description != null && status != null && number != null && id != null)
+            {
+                connection();
+                con.Open();
+                SqlCommand command = new SqlCommand("update_document", con);
+                command.CommandType = CommandType.StoredProcedure;
+                Console.WriteLine(id);
+                Console.WriteLine(date);
+                Console.WriteLine(description);
+                Console.WriteLine(status);
+                Console.WriteLine(number);
+                command.Parameters.Add("@id", id);
+                command.Parameters.Add("@date", date);
+                command.Parameters.Add("@description", description);
+                command.Parameters.Add("@status", status-1);
+                command.Parameters.Add("@doc_number", number);
+                try
+                {
+                    command.ExecuteNonQuery();
+                }
+                catch (IOException e)
+                {
+                    Console.WriteLine(e.ToString());
+                }
+                finally
+                {
+                    con.Close();
+                }
+            }
+
+        }
 
         public void GetStatusList()
         {

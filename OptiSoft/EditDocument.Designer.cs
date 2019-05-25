@@ -37,6 +37,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.DocumentNumber = new System.Windows.Forms.TextBox();
             this.statusBox = new System.Windows.Forms.ComboBox();
+            this.documentId = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.documentId)).BeginInit();
             this.SuspendLayout();
             // 
             // label4
@@ -52,9 +54,9 @@
             // 
             this.button1.Location = new System.Drawing.Point(36, 282);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(124, 23);
+            this.button1.Size = new System.Drawing.Size(238, 23);
             this.button1.TabIndex = 15;
-            this.button1.Text = "Создать документ";
+            this.button1.Text = "Сохранить изминения";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -116,11 +118,21 @@
             this.statusBox.Size = new System.Drawing.Size(121, 21);
             this.statusBox.TabIndex = 17;
             // 
+            // documentId
+            // 
+            this.documentId.Location = new System.Drawing.Point(424, 183);
+            this.documentId.Name = "documentId";
+            this.documentId.Size = new System.Drawing.Size(120, 20);
+            this.documentId.TabIndex = 19;
+            this.documentId.Visible = false;
+            this.documentId.ValueChanged += new System.EventHandler(this.documentId_ValueChanged);
+            // 
             // EditDocument
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(622, 330);
+            this.Controls.Add(this.documentId);
             this.Controls.Add(this.statusBox);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.button1);
@@ -131,7 +143,8 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.DocumentNumber);
             this.Name = "EditDocument";
-            this.Text = "EditDocument";
+            this.Text = "Редактировать документ";
+            ((System.ComponentModel.ISupportInitialize)(this.documentId)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -148,5 +161,6 @@
         public System.Windows.Forms.TextBox DocumentNumber;
         public System.Windows.Forms.TextBox DocumentDescription;
         public System.Windows.Forms.ComboBox statusBox;
+        public System.Windows.Forms.NumericUpDown documentId;
     }
 }

@@ -12,6 +12,8 @@ namespace OptiSoft
 {
     public partial class Form1 : Form
     {
+       
+
         public Form1()
         {
             InitializeComponent();
@@ -52,12 +54,11 @@ namespace OptiSoft
             edit.DocumentNumber.Text =record.doc_number;
             edit.DocumentDescription.Text = record.description;
 
-           
-           // string[] array = sql.getStatusList();
+
+            // string[] array = sql.getStatusList();
+            edit.documentId.Value = record.id;
             edit.statusBox.Items.AddRange(sql.getStatusList());
             edit.statusBox.SelectedIndex = record.status-1;
-          //edit.statusBox.Items.AddRange(employees);
-
             edit.Show();
         }
     }
