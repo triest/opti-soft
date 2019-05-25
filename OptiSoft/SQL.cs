@@ -69,15 +69,10 @@ namespace OptiSoft
                 con.Open();
                 SqlCommand command = new SqlCommand("update_document", con);
                 command.CommandType = CommandType.StoredProcedure;
-                Console.WriteLine(id);
-                Console.WriteLine(date);
-                Console.WriteLine(description);
-                Console.WriteLine(status);
-                Console.WriteLine(number);
                 command.Parameters.Add("@id", id);
                 command.Parameters.Add("@date", date);
                 command.Parameters.Add("@description", description);
-                command.Parameters.Add("@status", status-1);
+                command.Parameters.Add("@status", status);
                 command.Parameters.Add("@doc_number", number);
                 try
                 {
@@ -164,7 +159,10 @@ namespace OptiSoft
             }
             finally
             {
-
+                con.Close(); if (con != null)
+                {
+                    con.Close();
+                }
             }
             return null;
         }
@@ -179,20 +177,9 @@ namespace OptiSoft
                 command.CommandType = CommandType.StoredProcedure;
                 SqlDataReader rdr = null;
                 rdr = command.ExecuteReader();
-                //array of status
-                //Dictionary<int, String> array = new Dictionary<int, string>();
-                
-                List<string> temp=new List<string>();
-                int i = 0;
-                
-                while (rdr.Read())
+               List<string> temp=new List<string>();
+               while (rdr.Read())
                 {
-                    //  array.Add(i, rdr["name"].ToString());
-                    // i++;
-                    // array.Add(rdr["name"].ToString());
-                    //array[i]=rdr["status"].ToString();
-                    //i=i+1;
-                    //temp.add(rdr["status"].ToString());
                     temp.Add(rdr["status"].ToString());
                 }
                 string[] array = temp.ToArray();
@@ -202,9 +189,11 @@ namespace OptiSoft
             }
             finally
             {
-               
+                con.Close(); if (con != null)
+                {
+                    con.Close();
+                }
             }
-            return null;
         }
     }
 }

@@ -38,6 +38,7 @@
             this.DocumentNumber = new System.Windows.Forms.TextBox();
             this.statusBox = new System.Windows.Forms.ComboBox();
             this.documentId = new System.Windows.Forms.NumericUpDown();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.documentId)).BeginInit();
             this.SuspendLayout();
             // 
@@ -127,11 +128,22 @@
             this.documentId.Visible = false;
             this.documentId.ValueChanged += new System.EventHandler(this.documentId_ValueChanged);
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(331, 282);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 20;
+            this.button2.Text = "Отмена";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // EditDocument
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(622, 330);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.documentId);
             this.Controls.Add(this.statusBox);
             this.Controls.Add(this.label4);
@@ -162,5 +174,6 @@
         public System.Windows.Forms.TextBox DocumentDescription;
         public System.Windows.Forms.ComboBox statusBox;
         public System.Windows.Forms.NumericUpDown documentId;
+        private System.Windows.Forms.Button button2;
     }
 }

@@ -44,11 +44,17 @@ namespace OptiSoft
                 SQL sql = new SQL();
                 sql.InsertData(dateTime,description,status,number);
             }
+            this.Hide();
         }
 
         private void AddDocument_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -38,12 +38,18 @@ namespace OptiSoft
                 sql.UpdateDate(id,dateTime, description, status, number);
             }
 
+            this.Close();
 
         }
 
         private void documentId_ValueChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
