@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -54,12 +55,26 @@ namespace OptiSoft
             if (rez)
             {
                 Console.WriteLine("connenct");
+
             }
             else
             {
                 Console.WriteLine("no connect");
             }
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            using (StreamWriter writetext = new StreamWriter("write.txt"))
+            {
+                writetext.WriteLine(ServerName.Text);
+                writetext.WriteLine(User.Text);
+                writetext.WriteLine(Database.Text);
+                writetext.WriteLine(Password.Text);
+
+            }
         }
     }
 }

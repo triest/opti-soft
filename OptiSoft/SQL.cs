@@ -117,18 +117,19 @@ namespace OptiSoft
                 try
                 {
                     connection.Open();
+                    connection.Close();
                     return true;
                 }
                 catch (SqlException)
                 {
-                  
+                    return false;
                 }
                 finally{   
-                    connection.Close();
+                   ;
                   
                 }
             }
-            return false;
+           
             return true;
         }
 
