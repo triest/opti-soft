@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
 using System.IO;
+using System.Data.Common;
 
 namespace OptiSoft
 {
@@ -18,20 +19,34 @@ namespace OptiSoft
 
         public SqlConnection con;
 
+       public string constr;
+       public string server;
+       public string database;
 
         //To Handle connection related activities
         public void connection()
         {
-            string constr = "Data Source=MACHINE-VOIV7EH\\SQLEXPRESS; Initial Catalog = OptiSoft; Persist Security Info = False;Integrated Security=True;";
-            con = new SqlConnection(constr);
+            con = new SqlConnection(this.constr);
         }
 
         public void GetDBConnection()
         {
             connection();
-
         }
 
+        public SQL()
+        {
+            this.constr = this.ReadSettings();
+            this.constr = "Data Source=MACHINE-VOIV7EH\\SQLEXPRESS; Initial Catalog = OptiSoft; Persist Security Info = False;Integrated Security=True;";
+        }
+
+        public string ReadSettings()
+        {
+            string[] lines = System.IO.File.ReadAllLines("settings.txt");
+            //this.server = lines[0]; this.database = lines[2];
+            //string connect_string= "Data Source=" + lines[0].Trim() + "; Initial Catalog =" + lines[2].Trim() + "; Persist Security Info = False;Integrated Security=True;";
+            return lines[0].Trim();
+        }
 
 
         //call store procedure for insert date in Documents table
@@ -100,15 +115,18 @@ namespace OptiSoft
         public bool TestConnect(String ServerName, String User,String password,String Database)
         {
             connection();
+            string ConectString = "Data Source=MACHINE-VOIV7EH\\SQLEXPRESS; Initial Catalog = OptiSoft; Persist Security Info = False;Integrated Security=True;";
+            ConectString = "@Data Source=" + ServerName + "; Initial Catalog = " + Database + "; Persist Security Info = False;Integrated Security=True;";
+            Console.WriteLine("Data Source=" + ServerName);
+            Console.WriteLine("Initial Catalog = " + Database);
+            var builder = new System.Data.SqlClient.SqlConnectionStringBuilder
+            {
+                DataSource = "MACHINE - VOIV7EH\\SQLEXPRESS",
+                InitialCatalog = "Optisoft",
+                PersistSecurityInfo = false,
+                IntegratedSecurity = true
 
-            //string constr = "Data Source=MACHINE-VOIV7EH\\SQLEXPRESS; Initial Catalog = OptiSoft; Persist Security Info = False;Integrated Security=True;";
-
-            //string ConectString= "Data Source=" + ServerName.Trim() + "; Initial Catalog = " + Database.Trim() + "; Persist Security Info = False;Integrated Security=True;";
-
-            //Data Source=MACHINE-VOIV7EH\\SQLEXPRESS;Initial Catalog = OptiSoft; Persist Security Info = False;Integrated Security=True;
-           string ConectString = "Data Source=MACHINE-VOIV7EH\\SQLEXPRESS; Initial Catalog = OptiSoft; Persist Security Info = False;Integrated Security=True;";
-
-            Console.WriteLine(ConectString);
+            };
 
             using (SqlConnection connection = new SqlConnection(ConectString))
             {
